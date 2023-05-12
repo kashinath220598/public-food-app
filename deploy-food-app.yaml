@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: foodapp-deployment
+  labels:
+    apps: foodapp-deploy-labels
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: foodapp-pod    
+  template:
+    metadata:
+      labels:
+        app: foodapp-pod
+    spec:
+      containers:
+        - name: foodapp-container
+          image: kashinath22/food-order:v1.0
+          ports:
+            - containerPort: 3000
+          
+            
